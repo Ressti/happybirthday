@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lobster', cursive;
+            background-image: url('8.jpg'); /* Set your background image here */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Hide overflow to prevent scroll bars */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 10px; /* Further reduced padding */
+            border-radius: 8px; /* Smaller border radius */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+            width: 90%;
+            max-width: 600px; /* Reduced max width */
+            position: relative;
+        }
+
+        h1 {
+            color: #ff6363;
+            font-size: 1.5em; /* Further reduced font size */
+            margin-bottom: 10px; /* Reduced margin */
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1px; /* Further reduced gap */
+        }
+
+        .gallery img {
+            width: calc(25% - 2px); /* Further reduced width */
+            border-radius: 3px; /* Smaller border radius */
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05); /* Slight zoom effect */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+        }
+
+        .button {
+            background-color: #ff6363;
+            color: white;
+            border: none;
+            padding: 6px 12px; /* Reduced padding */
+            border-radius: 4px;
+            font-size: 0.9em; /* Reduced font size */
+            cursor: pointer;
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e53e3e;
+        }
+
+        /* Lightbox styles */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden; /* Hide overflow */
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox img {
+            max-width: 60%; /* Adjusted max width */
+            max-height: 60%; /* Adjusted max height */
+            border-radius: 5px; /* Smaller border radius */
+            transition: transform 0.3s ease;
+        }
+
+        .lightbox img:hover {
+            transform: scale(1.1);
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 10px; /* Adjusted position */
+            right: 15px; /* Adjusted position */
+            color: #fff;
+            font-size: 1.2em; /* Slightly smaller font size */
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .lightbox .close:hover {
+            color: #ff6363;
+        }
+
+        .lightbox .prev, .lightbox .next {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 8px; /* Reduced padding */
+            margin-top: -16px; /* Adjusted position */
+            color: #ff6363;
+            font-weight: bold;
+            font-size: 1.2em; /* Slightly smaller font size */
+            border-radius: 3px;
+            background-color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .lightbox .prev:hover, .lightbox .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .lightbox .prev {
+            left: 10px;
+        }
+
+        .lightbox .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Photo Gallery</h1>
+        
+        <!-- Gallery Section -->
+        <div class="gallery">
+            <img src="8.jpg" alt="Photo 1">
+            <img src="12.jpg" alt="Photo 2">
+            <img src="13.jpg" alt="Photo 3">
+            <img src="14.webp" alt="Photo 4">
+            <img src="15.webp" alt="Photo 5">
+            <img src="16.jpg" alt="Photo 6">
+            <img src="17.jpg" alt="Photo 7">
+            <img src="18.jpg" alt="Photo 8">
+        </div>
+
+        <a href="page9.html" class="button">Buka</a>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="close" id="closeLightbox">&times;</span>
+        <span class="prev" id="prevSlide">&#10094;</span>
+        <img id="lightboxImage" src="01GY1WTB3B4F8YQT3GANV49WTR.jpg" alt="Lightbox Image">
+        <span class="next" id="nextSlide">&#10095;</span>
+    </div>
+
+    <!-- JavaScript for Lightbox and Sound Effects -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.gallery img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightboxImage');
+            const closeLightbox = document.getElementById('closeLightbox');
+            const prevSlide = document.getElementById('prevSlide');
+            const nextSlide = document.getElementById('nextSlide');
+            const clickSound = new Audio('click-sound.mp3'); // Add your click sound file here
+            const closeSound = new Audio('close-sound.mp3'); // Add your close sound file here
+            let currentIndex = 0;
+
+            images.forEach((image, index) => {
+                image.addEventListener('click', function() {
+                    lightbox.style.display = 'flex';
+                    lightboxImage.src = this.src;
+                    currentIndex = index;
+                    clickSound.play(); // Play sound on image click
+                });
+            });
+
+            closeLightbox.addEventListener('click', function() {
+                lightbox.style.display = 'none';
+                closeSound.play(); // Play sound on lightbox close
+            });
+
+            lightbox.addEventListener('click', function(event) {
+                if (event.target === lightbox) {
+                    lightbox.style.display = 'none';
+                    closeSound.play(); // Play sound on lightbox close
+                }
+            });
+
+            prevSlide.addEventListener('click', function() {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lightboxImage.src = images[currentIndex].src;
+            });
+
+            nextSlide.addEventListener('click', function() {
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lightboxImage.src = images[currentIndex].src;
+            });
+        });
+    </script>
+</body>
+</html>

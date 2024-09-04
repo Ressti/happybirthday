@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday🎉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lobster', cursive;
+            background-image: url('9.jpg'); /* Set your background image here */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            z-index: 1;
+            transform: perspective(1000px);
+        }
+
+        h1 {
+            color: #ff6363;
+            font-size: 3em;
+            animation: bounceIn 2s ease-in-out, pulse 1.5s infinite, textShadow 3s infinite;
+        }
+
+        p {
+            color: #333;
+            font-size: 1.2em;
+            animation: fadeIn 2s ease-in-out, textSlide 5s ease-in-out infinite;
+        }
+
+        .button {
+            background-color: #ff6363;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:hover {
+            background-color: #e53e3e;
+            transform: scale(1.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .button:active {
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            transform: scale(1);
+        }
+
+        .sticker-container {
+            margin: 20px 0;
+            perspective: 1000px;
+        }
+
+        .sticker-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            cursor: pointer;
+            transform: rotateX(0deg) rotateY(0deg);
+            transition: transform 0.5s, box-shadow 0.5s;
+            animation: floatSticker 3s ease-in-out infinite;
+        }
+
+        .sticker-container:hover img {
+            transform: rotateX(15deg) rotateY(15deg) scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Keyframes for animations */
+        @keyframes bounceIn {
+            0% { transform: scale(0); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes floatSticker {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes floatHearts {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes textShadow {
+            0% { text-shadow: 0 0 0 rgba(0, 0, 0, 0.5); }
+            50% { text-shadow: 0 0 10px rgba(0, 0, 0, 0.7); }
+            100% { text-shadow: 0 0 0 rgba(0, 0, 0, 0.5); }
+        }
+
+        @keyframes textSlide {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(-10px); }
+            100% { transform: translateX(0); }
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            color: red;
+            animation: fall 10s infinite, floatHearts 6s ease-in-out infinite;
+        }
+
+        @keyframes floatHearts {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Different animations for different hearts */
+        .heart:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .heart:nth-child(2) { left: 25%; animation-delay: 2s; }
+        .heart:nth-child(3) { left: 40%; animation-delay: 4s; }
+        .heart:nth-child(4) { left: 55%; animation-delay: 6s; }
+        .heart:nth-child(5) { left: 70%; animation-delay: 8s; }
+        .heart:nth-child(6) { left: 85%; animation-delay: 10s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, Sayang! 🎉</h1>
+        <p>Makasih Ya sayang Sudah Menjadi Wanita Yang Baik Buat Abang Nya, Semoga Di Ulang Tahun Yang Ke 21 Tahun Ini Ayayng Nya Makin Solehah, Lebih Giat Kerja Nya Gak Banyak Males Nya Sayang, Dan Semoga Ayang Nya Selalu Berada Di Dalam Lindungan Allah SWT.. Amin🤲 </p>
+
+        <!-- Sticker Section -->
+        <div class="sticker-container">
+            <a href="page7.html">
+                <img src="Stiker 42 (SFILE.MOBI).gif" alt="Sticker" />
+            </a>
+        </div>
+
+        <a href="page5.html" class="button">Back to Previous</a>
+        <a href="index.html" class="button">Back to Home</a>
+    </div>
+
+    <!-- Falling Hearts -->
+    <div class="heart">❤️</div>
+    <div class="heart">💖</div>
+    <div class="heart">💗</div>
+    <div class="heart">💘</div>
+    <div class="heart">💓</div>
+    <div class="heart">💞</div>
+
+    <!-- Confetti Effect -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        function triggerConfetti(x, y) {
+            confetti({
+                particleCount: 300,
+                angle: 90,
+                spread: 100,
+                origin: { x: x, y: y },
+                colors: ['#ff6347', '#ff1493', '#ff4500', '#32cd32', '#1e90ff'],
+                shapes: ['circle', 'square', 'triangle'],
+                scalar: 1.2
+            });
+        }
+
+        window.onload = function() {
+            triggerConfetti(0.5, 0.5); // Center of the screen
+        };
+
+        document.body.addEventListener('click', function(event) {
+            triggerConfetti(event.clientX / window.innerWidth, event.clientY / window.innerHeight);
+        });
+
+        setInterval(() => {
+            triggerConfetti(Math.random(), Math.random());
+        }, 5000); // Trigger every 5 seconds
+
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('mouseover', () => {
+                triggerConfetti(0.5, 0.5); // Center of the screen
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday🎉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lobster', cursive;
+            background-image: url('2.jpg'); /* Background image remains unchanged */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            color: #ff6363;
+            font-size: 3em;
+            margin: 0;
+            opacity: 0;
+            animation: fadeInUp 1.5s forwards, bounce 1s 1s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        p {
+            color: #333;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 20px 0;
+            opacity: 0;
+            animation: fadeInText 2s 0.5s forwards;
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button {
+            background-color: #ff6363;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .button:hover {
+            background-color: #e53e3e;
+            transform: scale(1.05);
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        .sticker-container {
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sticker-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: stickerAnimation 2s ease-in-out infinite;
+        }
+
+        @keyframes stickerAnimation {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.1) rotate(5deg);
+            }
+        }
+
+        .sticker-container img:hover {
+            transform: scale(1.2) rotate(10deg);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            font-size: 2em;
+            color: #ff6363;
+            margin: 20px 0;
+            font-weight: bold;
+            opacity: 0;
+            animation: fadeInText 2s 1s forwards;
+        }
+
+        /* Confetti Effect */
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1); /* Add a slight background to the confetti */
+        }
+
+        .confetti div {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 204, 0, 0.8);
+            animation: confettiAnimation 5s infinite;
+        }
+
+        @keyframes confettiAnimation {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Start Button */
+        .start-button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .start-button:hover {
+            background-color: #45a049;
+        }
+
+        .start-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday!</h1>
+        <p>Di hari spesialmu ini, jangan biarkan malas menghampirimu. Setiap momen bersamamu adalah hadiah terindah, dan aku ingin kita membuat hari ini lebih cerah dari sebelumnya. Selamat ulang tahun, cintaku! 🌟💕</p>
+      
+        <!-- Countdown Timer -->
+        <div class="countdown" id="countdown"></div>
+
+        <!-- Sticker Section -->
+        <div class="sticker-container">
+            <a href="page4.html">
+                <img src="Stiker 23 (SFILE.MOBI).gif" alt="Sticker" />
+            </a>
+        </div>
+
+        <!-- Start Button -->
+        <a href="page2.html" class="button">Back to Previous</a>
+        <a href="index.html" class="button">Back to Home</a>
+    </div>
+
+    <!-- Confetti Effect -->
+    <div class="confetti" id="confetti"></div>
+
+    <!-- Audio for Surprise -->
+    <audio id="surprise-audio" src="nada-dering-wow-cantik-memang-cwantik-www.tiengdong.com.mp3"></audio>
+
+    <script>
+    // Countdown Timer Script
+    function startCountdown() {
+        const endDate = new Date(new Date().getTime() + 5 * 1000); // Set target date to 5 seconds from now
+        const countdownElement = document.getElementById('countdown');
+        const surpriseAudio = document.getElementById('surprise-audio');
+
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = endDate - now;
+
+            if (timeRemaining <= 0) {
+                countdownElement.innerHTML = ''; // Clear countdown text
+                showStartButton(); // Show the start button
+                surpriseAudio.play(); // Play the audio
+                clearInterval(interval);
+                return;
+            }
+
+            const seconds = Math.floor(timeRemaining / 1000);
+            countdownElement.innerHTML = `${seconds}s`;
+        }
+
+        updateCountdown(); // Initial call to display countdown immediately
+        const interval = setInterval(updateCountdown, 1000); // Update every second
+    }
+
+    function showStartButton() {
+        const container = document.querySelector('.container');
+
+        // Create a new button element
+        const startButton = document.createElement('button');
+        startButton.className = 'start-button';
+        startButton.id = 'start-button';
+        startButton.textContent = 'Start Audio';
+
+        // Add an event listener to play audio on click
+        startButton.addEventListener('click', function() {
+            document.getElementById('surprise-audio').play();
+        });
+
+        // Add the button to the container
+        container.appendChild(startButton);
+    }
+
+    // Start countdown on page load
+    window.onload = function() {
+        startCountdown();
+        generateConfetti();
+    };
+
+    // Confetti Effect Script
+    function generateConfetti() {
+        const confettiContainer = document.getElementById('confetti');
+        const numberOfConfetti = 100; // Adjust the number of confetti pieces here
+
+        for (let i = 0; i < numberOfConfetti; i++) {
+            const confettiPiece = document.createElement('div');
+            confettiPiece.style.background = getRandomColor();
+            confettiPiece.style.width = `${Math.random() * 10 + 5}px`;
+            confettiPiece.style.height = confettiPiece.style.width;
+            confettiPiece.style.left = `${Math.random() * 100}vw`;
+            confettiPiece.style.top = `${Math.random() * 100}vh`;
+            confettiPiece.style.opacity = Math.random();
+            confettiContainer.appendChild(confettiPiece);
+        }
+    }
+
+    function getRandomColor() {
+        const colors = [
+            'rgba(255, 102, 102, 0.8)',
+            'rgba(255, 204, 0, 0.8)',
+            'rgba(102, 204, 255, 0.8)',
+            'rgba(153, 204, 102, 0.8)',
+            'rgba(255, 102, 178, 0.8)'
+        ];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+</script>
+
+</body>
+</html>

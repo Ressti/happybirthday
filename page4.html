@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday🎉</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Font Awesome for icons -->
+    <style>
+        body {
+            font-family: 'Lobster', cursive;
+            background-image: url('10.jpg'); /* Set your background image here */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden;
+            cursor: url('custom-cursor.png'), auto;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        h1 {
+            color: #ff6363;
+            font-size: 3em;
+            animation: bounce 2s infinite;
+        }
+
+        p {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            animation: slideIn 2s ease-in-out;
+        }
+
+        .button {
+            background-color: #ff6363;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e53e3e;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 99, 99, 0.8);
+        }
+
+        .sticker-container {
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .sticker-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            cursor: pointer;
+            animation: float 3s ease-in-out infinite, pulse 1.5s infinite;
+            transform: perspective(500px) rotateY(0deg);
+            transition: transform 0.5s;
+        }
+
+        .sticker-container img:hover {
+            transform: perspective(500px) rotateY(20deg) rotateX(10deg);
+            animation: float 3s ease-in-out infinite, pulse 1.5s infinite, spin 4s linear infinite;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .floating-hearts::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: url('heart.svg') no-repeat center center;
+            background-size: contain;
+            animation: floatHearts 10s linear infinite;
+            opacity: 0.5;
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: #ff6363;
+            font-size: 2em;
+            margin: 0 10px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #e53e3e;
+            transform: scale(1.2);
+        }
+
+        .cake-icon {
+            font-size: 2.5em;
+            color: #ff6363;
+            animation: bounce 2s infinite;
+            margin: 20px 0;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        @keyframes floatHearts {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-100vh); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday!</h1>
+        <p><span id="typewriter-text"></span></p>
+
+        <!-- Cake Icon -->
+        <div class="cake-icon">
+            <i class="fas fa-birthday-cake"></i>
+        </div>
+
+        <!-- Sticker Section -->
+        <div class="sticker-container">
+            <a href="page5.html">
+                <img src="Stiker 36 (SFILE.MOBI).gif" alt="Sticker" />
+            </a>
+        </div>
+
+        <a href="page3.html" class="button">Back to Previous</a>
+        <a href="index.html" class="button">Back to Home</a>
+
+        <div class="floating-hearts"></div>
+    </div>
+
+    <audio id="button-sound" src="click-sound.mp3" preload="auto"></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+
+            const text = "Sehat Selalu Ya Cantik Biar Nanti Bisa Jalan - Jalan Terus Sayang Dan Jangan Bergadang Mulu Biar Kondisi Badan Nya Stabil Cantik😇";
+            let index = 0;
+
+            function typeWriter() {
+                if (index < text.length) {
+                    document.getElementById("typewriter-text").innerHTML += text.charAt(index);
+                    index++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+
+            typeWriter();
+
+            document.querySelectorAll('.button').forEach(button => {
+                button.addEventListener('click', () => {
+                    document.getElementById('button-sound').play();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
